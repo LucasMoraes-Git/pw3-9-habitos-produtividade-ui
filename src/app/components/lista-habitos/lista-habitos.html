@@ -1,0 +1,31 @@
+<h2>Lista de Hábitos</h2>
+
+@if (habitos().length === 0) {
+  <p>Nenhum hábito cadastrado.</p>
+}
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Dias</th>
+      <th>Meta</th>
+      <th>Conquista</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (h of habitos(); track h.id) {
+      <tr>
+        <td>{{ h.descricao }}</td>
+        <td>{{ h.diasConsecutivos }}</td>
+        <td>{{ h.metaDias }}</td>
+        <td>{{ h.conquistaAlcancada ? 'Sim' : 'Não' }}</td>
+        <td>
+          <button (click)="fazerCheckin(h.id)">Check-in</button>
+          <button (click)="excluir(h.id)">Excluir</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
